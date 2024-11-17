@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import "@radix-ui/themes/styles.css";
+import { ThemeProvider } from "next-themes";
+import { Theme } from "@radix-ui/themes";
+import { inter, libre_baskerville } from "@/app/fonts/fonts";
 
 export const metadata: Metadata = {
-  title: "kevinh.dev",
+  title: {
+    default: "kevinh.dev",
+    template: "%s | kevinh.dev",
+  },
   description: "Software Engineer and Student @UNSW",
 };
 
@@ -24,12 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${libre_baskerville.variable} antialiased`}
+        suppressHydrationWarning
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <Theme>
+            {children}
+          </Theme>
+        </ThemeProvider>
       </body>
-    </html>
+    </html >
   );
 }
