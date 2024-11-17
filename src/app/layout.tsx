@@ -22,10 +22,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${libre_baskerville.variable} antialiased`}
-        suppressHydrationWarning
       >
         <ThemeProvider attribute="class" defaultTheme="system">
-          <Theme>
+          <Theme accentColor="iris">
             {children}
           </Theme>
         </ThemeProvider>
