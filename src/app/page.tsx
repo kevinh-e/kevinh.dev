@@ -8,10 +8,10 @@ import { Text } from "@radix-ui/themes/dist/cjs/index.js";
 export default function Home() {
   return (
     <main className="bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-      <div className="flex fixed justify-evenly inset-[3vh] p-[3%] border bg-black border-zinc-400">
+      <div className="flex fixed justify-evenly inset-1 p-[3%] border bg-black border-zinc-400">
         <DevCallout />
         <div className="self-center flex flex-col justify-center items-center">
-          <div className="mt-32 w-fit duration-1000 animate-grow border-zinc-50 font-serif">
+          <div className="w-fit duration-1000 animate-grow border-zinc-50 font-serif">
             <Title>kevin he</Title>
             <Text as="span" trim="both" className="animate-fade-in">
               kevin is currently studying computer-science and physics at UNSW.
