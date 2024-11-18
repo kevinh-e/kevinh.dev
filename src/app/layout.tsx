@@ -7,7 +7,7 @@ import { inter, libre_baskerville } from "@/app/fonts/fonts";
 
 export const metadata: Metadata = {
   title: {
-    default: "kevinh.dev",
+    default: "kevinh.devjsdlasd",
     template: "%s | kevinh.dev",
   },
   description: "Software Engineer and Student @UNSW",
