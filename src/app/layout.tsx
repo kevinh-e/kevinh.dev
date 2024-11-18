@@ -24,7 +24,13 @@ export default function RootLayout({
         className={`${inter.variable} ${libre_baskerville.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
-          <Theme accentColor="iris">
+          <Theme
+            accentColor="iris"
+            grayColor="mauve"
+            radius="large"
+            scaling="100%"
+            panelBackground="translucent"
+          >
             {children}
           </Theme>
         </ThemeProvider>

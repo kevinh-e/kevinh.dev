@@ -6,12 +6,12 @@ import { Callout } from "@radix-ui/themes";
 
 export const DevCallout = () => {
   return (
-    <div className="fixed h-0">
+    <div className="absolute h-0">
       <Callout.Root size="2" variant="outline">
-        <Callout.Icon>
-          <InfoCircledIcon />
+        <Callout.Icon >
+          <InfoCircledIcon color="gray" />
         </Callout.Icon>
-        <Callout.Text>
+        <Callout.Text color="gray">
           This site is still under development.
         </Callout.Text>
       </Callout.Root>
