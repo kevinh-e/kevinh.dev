@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import React from 'react'
+import React from "react";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Callout } from "@radix-ui/themes";
 
-const DevCallout = () => {
+export const DevCallout = () => {
   return (
     <div className="fixed h-0">
       <Callout.Root size="2" variant="outline">
@@ -17,6 +17,5 @@ const DevCallout = () => {
       </Callout.Root>
     </div>
   )
-}
+};
 
-export default DevCallout
