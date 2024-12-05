@@ -1,28 +1,19 @@
 "use client"
 
-import { DevCallout } from "@/components/DevCallout";
-import Particles from "@/components/Particles";
+import { Text } from "@radix-ui/themes";
+
 import Title from "@/components/Title";
-import { Text } from "@radix-ui/themes/dist/cjs/index.js";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-      <div className="flex fixed justify-evenly inset-1 p-[3%] border bg-black border-zinc-400">
-        <DevCallout />
-        <div className="self-center flex flex-col justify-center items-center">
-          <div className="w-fit duration-1000 animate-grow border-zinc-50 font-serif">
-            <Title>kevin he</Title>
-            <Text as="span" trim="both" className="animate-fade-in">
-              kevin is currently studying computer-science and physics at UNSW.
-            </Text>
-            <Particles
-              className="absolute inset-0 -z-10 animate-fade-in"
-              quantity={100}
-            />
-          </div >
-        </div>
-      </div>
-    </main>
+    <div className="container flex flex-col justify-center items-center relative">
+      <Title> kevin he</Title >
+      <Text as="span" trim="both" className="animate-fade-in lg:text-lg font-sans text-zinc-400 mt-4 lg:mt-6 max-w-[200px] md:max-w-sm lg:max-w-none whitespace-pre-wrap transition-all">
+        kevin is currently studying software engineering at {<a href="https://www.unsw.edu.au/" target="_blank" className="transition-all text-zinc-300 duration-300 hover:text-zinc-50">UNSW</a>}.
+      </Text>
+      <Button variant="default" size="lg" className="group mt-8 animate-fade-in-delay"><Link href="/projects">Learn More</Link></Button>
+    </div >
   );
 }

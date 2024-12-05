@@ -1,5 +1,8 @@
-import type { Config } from "tailwindcss";
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
 
+/** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
   content: [
@@ -19,14 +22,12 @@ export default {
       },
       animation: {
         "fade-in": "fade-in 2.5s ease-in-out forwards",
+        "fade-in-delay": "fade-in 4s ease-in-out forwards",
         title: "title 2.5s ease-out forwards",
         "fade-left": "fade-left 2.5s ease-in-out forwards",
         "fade-right": "fade-right 2.5s ease-in-out forwards",
         nav: "nav 2.5s ease-in-out forwards",
         navbar: "navbar 3.2s ease-in-out forwards",
-        "fade-card-1": "fade-card-1 2s ease-in-out forwards",
-        "fade-card-2": "fade-card-2 2s ease-in-out forwards",
-        "fade-card-3": "fade-card-3 2s ease-in-out forwards",
         grow: "grow 2s cubic-bezier(.35,0,0,1) forwards",
       },
       keyframes: {
@@ -35,6 +36,17 @@ export default {
             opacity: "0%",
           },
           "75%": {
+            opacity: "0%",
+          },
+          "100%": {
+            opacity: "100%",
+          },
+        },
+        "fade-in-delay": {
+          "0%": {
+            opacity: "0%",
+          },
+          "90%": {
             opacity: "0%",
           },
           "100%": {
@@ -224,5 +236,8 @@ export default {
       }
     }
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@codaworks/react-glow/tailwind'),
+  ]
+}
