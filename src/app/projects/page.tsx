@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Text } from "@radix-ui/themes";
 import { projects } from "./projects";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Glow, GlowCapture } from "@codaworks/react-glow";
 import { Button } from "@/components/ui/button";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -35,8 +35,8 @@ export default function Home() {
                   <CardDescription className="text-lg tracking-wide">{project.description}</CardDescription>
                 </CardHeader>
                 <CardFooter className="flex flex-row absolute bottom-0 gap-4 justify-between w-full">
-                  <Button onClick={() => window.open(project.github, '_blank')} variant="outline" className="bg-transparent font-sans font-normal tracking-wide" size="lg"><GitHubLogoIcon />Github</Button>
-                  {project.link ? <Button onClick={() => window.open(project.link, '_blank')} variant="outlineSecondary" className="bg-secondary/50 font-sans font-normal tracking-wide" size="lg">visit<ExternalLink /></Button> : null}
+                  <Button onClick={() => openProject(project.github)} variant="outline" className="bg-transparent font-sans font-normal tracking-wide" size="lg"><GitHubLogoIcon />Github</Button>
+                  {project.link ? <Button onClick={() => openProject(project.link)} variant="outlineSecondary" className="bg-secondary/50 font-sans font-normal tracking-wide" size="lg">visit<ExternalLink /></Button> : null}
                 </CardFooter>
               </div>
             </Card>

@@ -9,8 +9,7 @@ import { AppContext } from '@/app/AppContext';
 
 const Nav = () => {
   const routes = navigation;
-  const { currPage, currIndex } = useContext(AppContext);
-  console.log(currIndex)
+  const { currPage, pageIndex } = useContext(AppContext);
 
   return (
     <div className='container w-full'>
@@ -24,7 +23,7 @@ const Nav = () => {
           )
         })}
       </div>
-      <div className={`w-full h-[2px] bg-transparent mt-6 mb-12 bg-gradient-to-r from-border/10 via-${currIndex}0% via-foreground to-[${currIndex + 3}0%] to-border/10 transition-all duration-300`} />
+      <div className={`w-full h-[2px] bg-transparent mt-6 mb-12 bg-gradient-to-r from-border/10 via-${pageIndex}0% via-foreground to-[${pageIndex + 3}0%] to-border/10 transition-all duration-300`} />
     </div >
   )
 }

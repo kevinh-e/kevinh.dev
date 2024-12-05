@@ -1,35 +1,39 @@
 "use client"
 
-import React, { createContext, useState, useEffect, useCallback } from 'react'
+import React, { createContext, useState, useEffect, ReactNode } from 'react'
 import { usePathname } from 'next/navigation';
 import { navigation } from '@/util/routing';
 
-export const AppContext = createContext(null);
+type AppContextType = {
+  currPage: string;
+  pageIndex: number;
+}
 
-export const AppProvider = ({ children }) => {
+export const AppContext = createContext<AppContextType>({ currPage: "/", pageIndex: 0 });
+
+interface AppProviderProps {
+  children: ReactNode;
+}
+
+export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const routes = navigation;
   const pathname = usePathname()
-  let pageIndex: number;
 
-  routes.forEach((route, index) => {
-    if (route.href.localeCompare(pathname) === 0) {
-      pageIndex = index;
-    }
-  });
-
+  const [pageIndex, setPageIndex] = useState<number>(0);
   const [currPage, setCurrPage] = useState(pathname);
-  const [currIndex, setCurrIndex] = useState(pageIndex);
 
   useEffect(() => {
+    const index = routes.findIndex(route => route.href === pathname);
+    setPageIndex(index !== -1 ? index : 0);
+
     if (pathname !== currPage) {
       setCurrPage(pathname);
-      setCurrIndex(pageIndex)
-      console.log("Changed page to:", pathname, pageIndex);
+      console.log("Changed page to:", pathname, index);
     }
-  }, [pathname, currPage, currIndex])
+  }, [pathname, currPage, routes])
 
   return (
-    <AppContext.Provider value={{ currPage, currIndex }}>
+    <AppContext.Provider value={{ currPage, pageIndex }}>
       {children}
     </AppContext.Provider>
   )
