@@ -13,7 +13,7 @@ const Nav = () => {
   console.log(currIndex)
 
   return (
-    <div className='container w-full mt-12'>
+    <div className='container w-full'>
       <div className='w-full h-10 flex flex-row gap-3 items-end'>
         {routes.map((route, index) => {
           return (

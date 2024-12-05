@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Text } from "@radix-ui/themes";
 import Nav from "@/components/Nav3";
 
 const title = "Contact";

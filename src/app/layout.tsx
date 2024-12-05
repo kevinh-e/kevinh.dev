@@ -69,7 +69,7 @@ export default function RootLayout({
             scaling="100%"
             panelBackground="translucent"
           >
-            <main className="flex flex-col fixed items-center justify-center inset-[3vh] p-8 lg:p-12 xl:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+            <main className="flex flex-col fixed items-center justify-center inset-[3vh] p-5 md:p-10 lg:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black">
               {/* <DevCallout /> */}
               <AppProvider>
                 {children}
