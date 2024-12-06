@@ -1,7 +1,5 @@
 "use client"
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-
 export default function Home() {
   return (
     <div className="container overflow-y-scroll md:overflow-auto flex flex-col justify-start md:justify-center items-center h-full px-6 py-6 md:px-3 md:py-3 transition-all duration-300">
