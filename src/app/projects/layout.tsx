@@ -1,6 +1,7 @@
 import React from "react";
 
 import Nav from "@/components/Nav3";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const title = "Contact";
 
@@ -23,7 +24,9 @@ export default async function Layout({
   return (
     <div className="flex flex-col w-full h-full items-center justify-center">
       <Nav />
-      {children}
+      <LayoutWrapper>
+        {children}
+      </LayoutWrapper>
     </div>
   );
 }

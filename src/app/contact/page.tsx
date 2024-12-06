@@ -21,7 +21,7 @@ export default function Home() {
               </div>
               <div className="">
                 <CardHeader>
-                  <CardTitle className="font-serif font-semibold text-2xl">{contact.name}</CardTitle>
+                  <CardTitle className="font-serif font-semibold text-2xl tracking-wide">{contact.name}</CardTitle>
                   <p className="font-sans text-md">{contact.content}</p>
                   <CardDescription className="font-sans text-sm">{contact.site}</CardDescription>
                 </CardHeader>
