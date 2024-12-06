@@ -1,7 +1,6 @@
 import React from "react";
 
 import Nav from "@/components/Nav3";
-import { Separator } from "@radix-ui/themes";
 
 const title = "Contact";
 

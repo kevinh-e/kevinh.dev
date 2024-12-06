@@ -10,6 +10,7 @@ import { AppContext } from '@/app/AppContext';
 const Nav = () => {
   const routes = navigation;
   const { currPage, pageIndex } = useContext(AppContext);
+  console.log(pageIndex);
 
   return (
     <div className='container w-full'>
@@ -23,7 +24,7 @@ const Nav = () => {
           )
         })}
       </div>
-      <div className={`w-full h-[2px] bg-transparent mt-6 mb-12 bg-gradient-to-r from-border/10 via-${pageIndex}0% via-foreground to-[${pageIndex + 3}0%] to-border/10 transition-all duration-300`} />
+      <div className={`w-full max-w-[800px] h-[2px] bg-transparent mt-3 mb-12 bg-gradient-to-r from-foreground/80 via-40 via-foreground/80 to-border/20 transition-all duration-300`} />
     </div >
   )
 }
