@@ -14,7 +14,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col w-full h-full items-center justify-center overflow-y-scroll"
+        className="flex flex-col w-full h-full items-center justify-center overflow-y-scroll md:overflow-auto"
       >
         {children}
       </motion.div>

@@ -4,12 +4,13 @@ import { useState } from "react";
 
 import { Text } from "@radix-ui/themes";
 import { projects } from "./projects";
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from "@/components/ui/card";
 import { Glow, GlowCapture } from "@codaworks/react-glow";
 import { Button } from "@/components/ui/button";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { ExternalLink } from "lucide-react";
 import { openProject } from "@/util/helpers";
+import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   const [hovering, setHovering] = useState<number | null>(null);
@@ -27,11 +28,18 @@ export default function Home() {
             >
               <div className={`h-full absolute inset-0 bg-transparent transition-opacity duration-300 ${hovering === index ? 'opacity-0' : 'opacity-100'}`} />
               <div className={`h-full relative z-1 transition-all duration-300 ${hovering === index || hovering === null ? 'filter-none' : 'blur-sm'}`}>
-                <CardHeader className="mb-20">
+                <CardHeader>
                   <Text className="text-muted-foreground">{project.date}</Text>
                   <CardTitle className="font-serif text-2xl md:text-3xl transition-all duration-300">{project.name}</CardTitle>
                   <CardDescription className="text-lg tracking-wide">{project.description}</CardDescription>
                 </CardHeader>
+                <CardContent className="mb-16">
+                  <li className="flex flex-row gap-3 list-none">
+                    {project.tags.map((tag, index) => (
+                      <Badge key={index}>{tag}</Badge>
+                    ))}
+                  </li>
+                </CardContent>
                 <CardFooter className="flex flex-row absolute bottom-0 gap-4 justify-between w-full">
                   <Button onClick={() => openProject(project.github)} variant="outline" className="bg-transparent font-sans font-normal tracking-wide"><GitHubLogoIcon />Github</Button>
                   {project.link ? <Button onClick={() => openProject(project.link)} variant="outlineSecondary" className="bg-secondary/50 font-sans font-normal tracking-wide" >visit<ExternalLink /></Button> : null}
