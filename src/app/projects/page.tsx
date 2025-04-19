@@ -8,20 +8,10 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { ExternalLink } from "lucide-react"
 import { openProject } from "@/util/helpers"
 import { Badge } from "@/components/ui/badge"
-import { useState } from "react"
 import { useMediaQuery } from "@/hooks/use-media-query"
 
 export default function Home() {
-  const [expandedCard, setExpandedCard] = useState<number | null>(null)
   const isAtLeastMd = useMediaQuery("(min-width: 768px)")
-
-  const toggleCardExpansion = (index: number) => {
-    if (expandedCard === index) {
-      setExpandedCard(null)
-    } else {
-      setExpandedCard(index)
-    }
-  }
 
   return (
     <div className="container mx-auto px-4 py-6 h-full overflow-auto custom-scrollbar">
@@ -29,22 +19,15 @@ export default function Home() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className={`${isAtLeastMd && expandedCard === index ? "md:col-span-2" : ""
+            className={`${isAtLeastMd && project.isBig ? "md:col-span-2" : ""
               } transition-all duration-500 ease-in-out`}
-            onClick={() => isAtLeastMd && toggleCardExpansion(index)}
           >
             <div className="group relative cursor-pointer h-full">
-              {/* Glow effect container */}
-              <div
-                className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg blur opacity-0 
-                group-hover:opacity-70 transition duration-1000 group-hover:duration-200"
-              ></div>
-
-              <Card className="h-full flex flex-col border-2 border-border relative bg-secondary/30 z-10 hover:border-white/25 transition duration-200">
+              <Card className="h-full flex flex-col border-2 border-border relative bg-secondary/30 z-10 hover:border-indigo-400/80 transition duration-200 hover:shadow-lg hover:shadow-indigo-600/80">
                 <CardHeader className="flex-none">
                   <Text className="text-muted-foreground text-sm">{project.date}</Text>
                   <CardTitle className="font-serif text-xl md:text-2xl line-clamp-2">{project.name}</CardTitle>
-                  <CardDescription className={`text-base ${expandedCard === index ? "" : "line-clamp-3"}`}>
+                  <CardDescription className={"text-base line-clamp-3"}>
                     {project.description}
                   </CardDescription>
                 </CardHeader>

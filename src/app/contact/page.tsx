@@ -13,7 +13,7 @@ export default function Home() {
           return (
             <Card
               key={index}
-              className="cursor-pointer flex flex-row border-border border-2 hover:border-indigo-600/40 transition-all duration-300 transform hover:scale-105 bg-secondary/30"
+              className="cursor-pointer flex flex-row border-border border-2 hover:border-indigo-400/80 transition duration-200 hover:shadow-md hover:shadow-indigo-600/80 transform hover:scale-105 bg-secondary/30"
               onClick={() => openProject(contact.href)}
             >
               <div className="h-full flex justify-center items-center pl-6">
