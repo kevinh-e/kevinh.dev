@@ -1,54 +1,98 @@
 "use client"
 
-import { useState } from "react";
-
-import { Text } from "@radix-ui/themes";
-import { projects } from "./projects";
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from "@/components/ui/card";
-import { Glow, GlowCapture } from "@codaworks/react-glow";
-import { Button } from "@/components/ui/button";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { ExternalLink } from "lucide-react";
-import { openProject } from "@/util/helpers";
-import { Badge } from "@/components/ui/badge";
+import { Text } from "@radix-ui/themes"
+import { projects } from "./projects"
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import { ExternalLink } from "lucide-react"
+import { openProject } from "@/util/helpers"
+import { Badge } from "@/components/ui/badge"
+import { useState } from "react"
+import { useMediaQuery } from "@/hooks/use-media-query"
 
 export default function Home() {
-  const [hovering, setHovering] = useState<number | null>(null);
+  const [expandedCard, setExpandedCard] = useState<number | null>(null)
+  const isAtLeastMd = useMediaQuery("(min-width: 768px)")
+
+  const toggleCardExpansion = (index: number) => {
+    if (expandedCard === index) {
+      setExpandedCard(null)
+    } else {
+      setExpandedCard(index)
+    }
+  }
 
   return (
-    <GlowCapture className="container overflow-y-scroll scroll-smooth xl:overflow-auto h-full grid grid-cols-1 md:grid-cols-2 xl:grid-rows-2 xl:grid-cols-3 px-6 py-6 xl:px-12 md:py-6 gap-12 transition-all duration-300">
-      {projects.map((project, index) => {
-        return (
-          <Glow key={index} className="h-full">
-            <Card
-              className="h-full relative overflow-hidden bg-secondary/30 border-2 border-border glow:border-indigo-600/60 transition-all duration-300 hover:border-indigo-600/40"
-              onMouseEnter={() => setHovering(index)}
-              onClick={() => setHovering(prev => prev ? index : null)}
-              onMouseLeave={() => setHovering(null)}
-            >
-              <div className={`h-full absolute inset-0 bg-transparent transition-opacity duration-300 ${hovering === index ? 'opacity-0' : 'opacity-100'}`} />
-              <div className={`h-full relative z-1 transition-all duration-300 ${hovering === index || hovering === null ? 'filter-none' : 'blur-sm'}`}>
-                <CardHeader>
-                  <Text className="text-muted-foreground">{project.date}</Text>
-                  <CardTitle className="font-serif text-2xl md:text-3xl transition-all duration-300">{project.name}</CardTitle>
-                  <CardDescription className="text-lg tracking-wide">{project.description}</CardDescription>
+    <div className="container mx-auto px-4 py-6 h-full overflow-auto custom-scrollbar">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className={`${isAtLeastMd && expandedCard === index ? "md:col-span-2" : ""
+              } transition-all duration-500 ease-in-out`}
+            onClick={() => isAtLeastMd && toggleCardExpansion(index)}
+          >
+            <div className="group relative cursor-pointer h-full">
+              {/* Glow effect container */}
+              <div
+                className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg blur opacity-0 
+                group-hover:opacity-70 transition duration-1000 group-hover:duration-200"
+              ></div>
+
+              <Card className="h-full flex flex-col border-2 border-border relative bg-secondary/30 z-10 hover:border-white/25 transition duration-200">
+                <CardHeader className="flex-none">
+                  <Text className="text-muted-foreground text-sm">{project.date}</Text>
+                  <CardTitle className="font-serif text-xl md:text-2xl line-clamp-2">{project.name}</CardTitle>
+                  <CardDescription className={`text-base ${expandedCard === index ? "" : "line-clamp-3"}`}>
+                    {project.description}
+                  </CardDescription>
                 </CardHeader>
-                <CardContent className="mb-16">
-                  <li className="flex flex-row gap-3 list-none">
-                    {project.tags.map((tag, index) => (
-                      <Badge key={index}>{tag}</Badge>
+
+                <CardContent className="flex-grow">
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <Badge key={tagIndex} className="text-xs">
+                        {tag}
+                      </Badge>
                     ))}
-                  </li>
+                  </div>
                 </CardContent>
-                <CardFooter className="flex flex-row absolute bottom-0 gap-4 justify-between w-full">
-                  <Button onClick={() => openProject(project.github)} variant="outline" className="bg-transparent font-sans font-normal tracking-wide"><GitHubLogoIcon />Github</Button>
-                  {project.link ? <Button onClick={() => openProject(project.link)} variant="outlineSecondary" className="bg-secondary/50 font-sans font-normal tracking-wide" >visit<ExternalLink /></Button> : null}
+
+                <CardFooter className="flex-none mt-auto pt-4 flex justify-between gap-2">
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      openProject(project.github)
+                    }}
+                    variant="outline"
+                    className="bg-transparent font-sans font-normal tracking-wide text-sm"
+                    size="sm"
+                  >
+                    <GitHubLogoIcon className="mr-1 h-4 w-4" />
+                    Github
+                  </Button>
+
+                  {project.link && (
+                    <Button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        openProject(project.link)
+                      }}
+                      variant="outline"
+                      className="bg-secondary/50 font-sans font-normal tracking-wide text-sm"
+                      size="sm"
+                    >
+                      Visit
+                      <ExternalLink className="ml-1 h-4 w-4" />
+                    </Button>
+                  )}
                 </CardFooter>
-              </div>
-            </Card>
-          </Glow>
-        )
-      })}
-    </GlowCapture>
-  );
+              </Card>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
