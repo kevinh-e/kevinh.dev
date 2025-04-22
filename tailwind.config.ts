@@ -239,5 +239,16 @@ export default {
   plugins: [
     require("tailwindcss-animate"),
     require('@codaworks/react-glow/tailwind'),
+  ],
+  safelist: [
+    "hover:shadow-[0_0_15px_#00d5be]",
+    "hover:border-teal-400/80",
+    "hover:shadow-[0_0_15px_#ec003f]",
+    "hover:border-rose-500/80",
+    "hover:shadow-[0_0_15px_#615fff]",
+    "hover:border-indigo-400/80",
+    "shadow-[0_0_10px_#00d5be]",
+    "shadow-[0_0_10px_#615fff]",
+    "shadow-[0_0_10px_#ec003f]",
   ]
 }

@@ -10,6 +10,8 @@ import { openProject } from "@/util/helpers"
 import { Badge } from "@/components/ui/badge"
 import { useMediaQuery } from "@/hooks/use-media-query"
 
+import { topicStyles } from "@/util/topicstyles"
+
 export default function Home() {
   const isAtLeastMd = useMediaQuery("(min-width: 768px)")
 
@@ -23,7 +25,7 @@ export default function Home() {
               } transition-all duration-500 ease-in-out`}
           >
             <div className="group relative cursor-pointer h-full">
-              <Card className="h-full flex flex-col border-2 border-border relative bg-secondary/30 z-10 hover:border-indigo-400/80 transition duration-200 hover:shadow-lg hover:shadow-indigo-600/80">
+              <Card className={`h-full flex flex-col border-2 border-border relative bg-secondary/30 z-10 transition duration-200 hover:shadow-lg ${topicStyles[project.topic].cardHoverShadow} ${topicStyles[project.topic].cardBorder}`}>
                 <CardHeader className="flex-none">
                   <Text className="text-muted-foreground text-sm">{project.date}</Text>
                   <CardTitle className="font-serif text-xl md:text-2xl line-clamp-2">{project.name}</CardTitle>
@@ -34,6 +36,9 @@ export default function Home() {
 
                 <CardContent className="flex-grow">
                   <div className="flex flex-wrap gap-2 mt-2">
+                    <Badge key={'topic'} variant={`${project.topic}`} className={`${topicStyles[project.topic].badgeShadow}`}>
+                      {project.topicTag}
+                    </Badge>
                     {project.tags.map((tag, tagIndex) => (
                       <Badge key={tagIndex} className="text-xs">
                         {tag}
@@ -72,10 +77,11 @@ export default function Home() {
                   )}
                 </CardFooter>
               </Card>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+            </div >
+          </div >
+        ))
+        }
+      </div >
+    </div >
   )
 }
