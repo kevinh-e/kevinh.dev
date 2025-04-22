@@ -61,7 +61,7 @@ export default function Home() {
                     Github
                   </Button>
 
-                  {project.link && (
+                  {project.link != "" ? (
                     <Button
                       onClick={(e) => {
                         e.stopPropagation()
@@ -74,7 +74,7 @@ export default function Home() {
                       Visit
                       <ExternalLink className="ml-1 h-4 w-4" />
                     </Button>
-                  )}
+                  ) : <></>}
                 </CardFooter>
               </Card>
             </div >

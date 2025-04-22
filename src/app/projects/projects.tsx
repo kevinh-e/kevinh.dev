@@ -4,7 +4,7 @@ type Project = {
   name: string;
   description: string;
   github: string;
-  link?: string;
+  link: string;
   topic: Topic;
   topicTag: string;
   tags: string[];
@@ -17,6 +17,7 @@ export const projects: Project[] = [
     name: "alphazero style chess-engine",
     description: "powerful deep reinforcement learning chess engine, based on the 2017 paper \"Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm\" that leverages deep neural networks to enhance the Monte-Carlo Tree Search algorithm",
     github: "https://github.com/kevinh-e/BetaZero",
+    link: "",
     topic: "ML",
     topicTag: "Machine Learning",
     tags: ["Python", "PyTorch"],
@@ -49,6 +50,7 @@ export const projects: Project[] = [
     name: "covid-19 radiography classifier",
     description: "custom residual neural network based on the 2015 paper \"Deep Residual Learning for Image Recognition\", but tuned for a 256x256 Lung CXR. Includes support for custom image classification against CIFAR10 classes",
     github: "https://github.com/kevinh-e/silver-palm-tree",
+    link: "",
     topic: "ML",
     topicTag: "Machine Learning",
     tags: ["Python", "PyTorch"],
