@@ -1,0 +1,105 @@
+export const resumeData = {
+  name: "Kevin He",
+  contact: {
+    email: "contact@kevinh.dev",
+    phone: "0451-781-138",
+    website: "kevinh.dev",
+    github: "kevinhedev",
+  },
+  education: [
+    {
+      institution: "University of New South Wales",
+      location: "Sydney, NSW",
+      degree: "BE in Computer Science",
+      period: "Feb. 2023 – Oct. 2026",
+    },
+    {
+      institution: "Normanhurst Boys High School",
+      location: "Sydney, NSW",
+      degree: "",
+      period: "Feb. 2017 – Nov. 2022",
+    },
+  ],
+  technologies: {
+    Languages: ["Python", "Java", "JavaScript/Typescript", "C++", "SQL (Postgres)", "Bash", "Lua"],
+    "Frameworks and Libraries": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "PyTorch",
+      "Express",
+      "TailwindCSS",
+      "Astro",
+      "RadixUI",
+    ],
+    "Developer Tools": ["Git", "Colab/Jupyter", "Docker", "Linux", "WSL2", "VS Code", "Gradle", "Jira", "Figma"],
+  },
+  projects: [
+    {
+      name: "TasteBuds",
+      technologies: ["Next.js", "React", "Socket.io", "Node.js", "TailWindCSS", "Git"],
+      year: "2025",
+      isBig: true,
+      details: [
+        "Developed a gamified cuisine recommendation app with real-time multi-user interaction via Socket.io",
+        "Deployed in 3 days during 2025 DevSoc Hackabyte Hackathon",
+        "Lead a 4-person dev team to qualify 2nd place overall",
+      ],
+      link: "https://tastebuds.kevinh.dev",
+      linkType: "Live Site",
+    },
+    {
+      name: "COVID19 Classifier",
+      technologies: ["PyTorch", "Python3", "Ray", "Tensorboard", "SKLearn"],
+      year: "2025",
+      details: [
+        "Self taught Machine Learning concepts from the ground up to modern Residual Neural Networks in PyTorch over the course of 7 days",
+        "Developed a custom modular ResNet model trained on 33,920 eye images to identify COVID-19, Lung Opacity and Viral Pneumonia using a 56 layer Residual CNN",
+        "Integrated RayTune and TensorBoard to visualise both accuracy and loss and self optimize hyperparameters",
+        "Yielded only 7.07% error using identical model architecture trained on CIFAR-10, matching top 3 performance against models from the original paper",
+      ],
+      link: "https://github.com/kevinhedev/covid19-classifier",
+      linkType: "Github",
+    },
+    {
+      name: "AlphaZero-Style Chess Engine",
+      technologies: ["PyTorch", "Python3", "Ray", "Tensorboard", "SKLearn"],
+      year: "2025",
+      details: [
+        "Developed a custom chess engine leveraging Monte Carlo Tree Search (MCTS) guided by a deep Policy/Value Network, inspired by DeepMind's AlphaZero.",
+        "Built a custom PyTorch neural network architecture to evaluate positions and suggest move probabilities, trained on millions of self-play games.",
+        "Achieved a competitive ELO relative to traditional engines on custom test suites, and visualized learning progression via custom training dashboard.",
+      ],
+      link: "https://github.com/kevinhedev/chess-engine",
+      linkType: "Github",
+    },
+  ],
+  experience: [
+    {
+      position: "Private Tutor",
+      company: "",
+      location: "",
+      period: "Apr 2023 - Present",
+      details: [
+        "Provided one-on-one tutoring in Mathematics and Physics for HSC-level students",
+        "Tailored lessons to suit individual learning styles and academic goals",
+        "Created custom practice materials and explained complex concepts in simple terms",
+        "Maintained consistent communication with students and parents to track progress",
+      ],
+    },
+    {
+      position: "Dental Assistant — Casual",
+      company: "Mastery Dental",
+      location: "Hornsby, NSW",
+      period: "Mar 2023 - Sep 2023",
+      details: [],
+    },
+  ],
+  extracurricular: [
+    "Participated in the Titanic – Machine Learning from Disaster Kaggle competition",
+    "Participated in DevSoc Hackabyte Hackathon, achieved 2nd place",
+    "Built custom PCs, highly experienced in hardware assembly and troubleshooting.",
+    "Earned an AMEB Certificate of Performance for Piano following Piano Comprehensive Solo Grade 8",
+  ],
+  lastUpdated: "April 2025",
+}

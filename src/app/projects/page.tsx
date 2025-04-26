@@ -16,13 +16,17 @@ export default function Home() {
   const isAtLeastMd = useMediaQuery("(min-width: 768px)")
 
   return (
-    <div className="container mx-auto px-4 py-6 h-full overflow-auto custom-scrollbar">
+    <div className="container mx-auto px-4 py-6 h-full overflow-auto custom-scrollbar fade-out-bottom">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
           <div
             key={index}
             className={`${isAtLeastMd && project.isBig ? "md:col-span-2" : ""
               } transition-all duration-500 ease-in-out`}
+            onClick={(e) => {
+              e.stopPropagation()
+              openProject(project.github)
+            }}
           >
             <div className="group relative cursor-pointer h-full">
               <Card className={`h-full flex flex-col border-2 border-border relative bg-secondary/30 z-10 transition duration-200 hover:shadow-lg ${topicStyles[project.topic].cardHoverShadow} ${topicStyles[project.topic].cardBorder}`}>

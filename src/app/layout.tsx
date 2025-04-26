@@ -8,6 +8,7 @@ import "../../globals.css"
 import Footer from "@/components/Footer";
 import { AppProvider } from "./AppContext";
 import Particles from "@/components/Particles";
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -57,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={`${inter.variable} ${libre_baskerville.variable} antialiased`}
       >
@@ -69,15 +70,17 @@ export default function RootLayout({
             scaling="100%"
             panelBackground="translucent"
           >
-            <main className="flex flex-col fixed items-center justify-center inset-[3vh] p-5 md:p-10 lg:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-              {/* <DevCallout /> */}
-              <AppProvider>
-                {children}
-                <Particles
-                  className="absolute inset-0 animate-fade-in -z-10"
-                  quantity={100}
-                />
-              </AppProvider>
+            <main>
+              <div className="flex flex-col fixed items-center justify-center inset-[3vh] p-5 md:p-10 lg:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black rounded-lg">
+                <AppProvider>
+                  {children}
+                  <Toaster />
+                  <Particles
+                    className="absolute inset-0 animate-fade-in -z-10"
+                    quantity={100}
+                  />
+                </AppProvider>
+              </div>
             </main>
             <Footer />
           </Theme>

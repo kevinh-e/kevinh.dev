@@ -24,7 +24,7 @@ const Nav = () => {
           )
         })}
       </div>
-      <div className={`w-full max-w-[800px] h-[2px] bg-transparent mt-3 mb-12 bg-gradient-to-r from-foreground/80 via-40 via-foreground/80 to-border/20 transition-all duration-300`} />
+      <div className={`w-full max-w-[800px] h-[2px] bg-transparent mt-3 mb-8 bg-gradient-to-r from-foreground/80 via-40 via-foreground/80 to-border/20 transition-all duration-300`} />
     </div >
   )
 }

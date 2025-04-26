@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     name: "alphazero style chess-engine",
     description: "powerful deep reinforcement learning chess engine, based on the 2017 paper \"Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm\" that leverages deep neural networks to enhance the Monte-Carlo Tree Search algorithm",
-    github: "https://github.com/kevinh-e/BetaZero",
+    github: "https://github.com/kevinh-e/BetaOne",
     link: "",
     topic: "ML",
     topicTag: "Machine Learning",

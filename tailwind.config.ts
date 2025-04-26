@@ -22,7 +22,7 @@ export default {
       },
       animation: {
         "fade-in": "fade-in 2.5s ease-in-out forwards",
-        "fade-in-delay": "fade-in 4s ease-in-out forwards",
+        "fade-in-delay": "fade-in 3s ease-in-out forwards",
         title: "title 2.5s ease-out forwards",
         "fade-left": "fade-left 2.5s ease-in-out forwards",
         "fade-right": "fade-right 2.5s ease-in-out forwards",
