@@ -32,7 +32,7 @@ export default function Home() {
               <Card className={`h-full flex flex-col border-2 border-border relative bg-secondary/30 z-10 transition duration-200 hover:shadow-lg ${topicStyles[project.topic].cardHoverShadow} ${topicStyles[project.topic].cardBorder}`}>
                 <CardHeader className="flex-none">
                   <Text className="text-muted-foreground text-sm">{project.date}</Text>
-                  <CardTitle className="font-serif text-xl md:text-2xl line-clamp-2">{project.name}</CardTitle>
+                  <CardTitle className="text-xl md:text-2xl line-clamp-2">{project.name}</CardTitle>
                   <CardDescription className={"text-base line-clamp-3"}>
                     {project.description}
                   </CardDescription>

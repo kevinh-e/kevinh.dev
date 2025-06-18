@@ -66,7 +66,7 @@ export default function Contact() {
                 <div className="flex items-center p-4">
                   {Icon && <Icon className="h-8 w-8 text-secondary-foreground mr-4" />}
                   <div>
-                    <CardTitle className="font-serif font-semibold text-xl tracking-wide">{contact.name}</CardTitle>
+                    <CardTitle className="font-semibold text-xl tracking-wide">{contact.name}</CardTitle>
                     <p className="font-sans text-md">{contact.content}</p>
                     <CardDescription className="font-sans text-sm">{contact.site}</CardDescription>
                   </div>
@@ -84,7 +84,7 @@ export default function Contact() {
         <div className="lg:w-2/3">
           <Card className="border-border border-2 bg-secondary/30 h-full">
             <CardHeader>
-              <CardTitle className="font-serif font-semibold text-2xl tracking-wide">send a message</CardTitle>
+              <CardTitle className="font-semibold text-2xl tracking-wide">send a message</CardTitle>
               <CardDescription>get in touch with me directly</CardDescription>
             </CardHeader>
             <CardContent>
@@ -132,7 +132,7 @@ export default function Contact() {
                 <div className="w-full flex justify-end">
                   <Button
                     type="submit"
-                    className="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700"
+                    className="font-sans text-background/80 font-base w-full md:w-auto"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
