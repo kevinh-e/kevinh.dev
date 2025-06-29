@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import emailjs from "@emailjs/browser"
 
 import { useState } from "react"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
@@ -10,7 +11,6 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { contacts } from "./contacts"
 import { openProject } from "@/util/helpers"
-import { sendMessage } from "./actions"
 import { useToast } from "@/hooks/use-toast"
 
 export default function Contact() {
@@ -32,14 +32,25 @@ export default function Contact() {
     setIsSubmitting(true)
 
     try {
-      await sendMessage(formData)
+      await emailjs.send(
+        "service_9rvxl9p",
+        "template_j4pbx4b",
+        {
+          user_name: formData.name,
+          user_email: formData.email,
+          message: formData.message,
+        },
+        "5R6ruDNJZvRV6lbrf"
+      )
+
       toast({
         title: "Message sent!",
         description: "Thank you for reaching out. I'll get back to you soon.",
         variant: "default",
       })
       setFormData({ name: "", email: "", message: "" })
-    } catch {
+    } catch (error) {
+      console.error("EmailJS error:", error)
       toast({
         title: "Something went wrong",
         description: "Your message couldn't be sent. Please try again later.",
