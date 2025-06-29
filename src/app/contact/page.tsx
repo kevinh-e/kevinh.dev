@@ -39,7 +39,7 @@ export default function Contact() {
         variant: "default",
       })
       setFormData({ name: "", email: "", message: "" })
-    } catch (error) {
+    } catch {
       toast({
         title: "Something went wrong",
         description: "Your message couldn't be sent. Please try again later.",

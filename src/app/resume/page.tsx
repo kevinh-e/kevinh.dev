@@ -5,7 +5,6 @@ import { resumeData } from "./resume-data"
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { useMediaQuery } from "@/hooks/use-media-query"
 import { Download, ExternalLink, Mail, Phone, Github } from "lucide-react"
 import Link from "next/link";
 
