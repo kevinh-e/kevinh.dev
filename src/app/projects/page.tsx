@@ -6,8 +6,6 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
 
-import Link from "next/link";
-
 import { topicStyles } from "@/util/topicstyles"
 
 export default function Home() {

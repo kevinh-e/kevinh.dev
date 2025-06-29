@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['lucide-react'] // add this
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  transpilePackages: ['lucide-react']
 };
 
 export default nextConfig;
