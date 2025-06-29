@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
@@ -51,8 +51,8 @@ export default function Contact() {
   }
 
   return (
-    <div className="container py-4 md:py-8 lg:py-12">
-      <div className="flex flex-col lg:flex-row gap-8">
+    <div className="container flex flex-col justify-center sm:py-4 md:py-6 md:py-8 lg:py-12 px-2 sm:px-4 h-full">
+      <div className="flex flex-col lg:flex-row gap-8 lg:items-center h-full">
         {/* Contact cards - vertical on desktop, horizontal on mobile */}
         <div className="lg:w-1/4 xl:w-1/5 space-y-4">
           {contacts.map((contact, index) => {
@@ -76,71 +76,76 @@ export default function Contact() {
           })}
         </div>
 
-        {/* Divider */}
-        <div className="mx-4 w-[2px] bg-gradient-to-b from-slate-50 via-90 to-border/20">
-        </div>
+        <div className="flex flex-row w-full gap-8 items-stretch">
+          {/* Divider */}
+          <div className="mx-4 hidden lg:block self-stretch w-[2px] bg-gradient-to-b from-slate-50 to-border/20">
+          </div>
 
-        {/* Message form */}
-        <div className="lg:w-2/3">
-          <Card className="border-border border-2 bg-secondary/30 h-full">
-            <CardHeader>
-              <CardTitle className="font-semibold text-2xl tracking-wide">send a message</CardTitle>
-              <CardDescription>get in touch with me directly</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-background/50"
-                    />
+          {/* Message form */}
+          <div className="flex-grow self-stretch">
+            <Card className="border-border border-2 bg-secondary/30 h-full">
+              <form onSubmit={handleSubmit}>
+                <CardHeader>
+                  <CardTitle className="font-semibold text-2xl tracking-wide">send a message</CardTitle>
+                  <CardDescription>get in touch with me directly</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        placeholder="Your name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="bg-background/50"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="Your email address"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="bg-background/50"
+                      />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="Your email address"
-                      value={formData.email}
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Your message"
+                      rows={7}
+                      value={formData.message}
                       onChange={handleChange}
                       required
-                      className="bg-background/50"
+                      spellCheck
+                      className="bg-background/50 resize-none"
                     />
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Your message"
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="bg-background/50"
-                  />
-                </div>
-                <div className="w-full flex justify-end">
-                  <Button
-                    type="submit"
-                    className="font-sans text-background/80 font-base w-full md:w-auto"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </div>
+                </CardContent>
+                <CardFooter>
+                  <div className="w-full flex justify-end">
+                    <Button
+                      type="submit"
+                      className="font-sans text-background/80 font-base w-full md:w-auto"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </div>
+                </CardFooter>
               </form>
-            </CardContent>
-          </Card>
+            </Card>
+          </div>
         </div>
       </div>
     </div>

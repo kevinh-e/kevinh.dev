@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@radix-ui/themes/styles.css";
-import { ThemeProvider } from "next-themes";
 import { Theme } from "@radix-ui/themes";
 
 import { inter, libre_baskerville } from "@/app/fonts/fonts";
@@ -22,13 +21,6 @@ export const metadata: Metadata = {
       "Software Engineering student at UNSW, Sydney",
     url: "https://kevinh.dev",
     siteName: "kevinh.dev",
-    // images: [
-    //   {
-    //     url: "https://chronark.com/og.png",
-    //     width: 1920,
-    //     height: 1080,
-    //   },
-    // ],
     locale: "en-AU",
     type: "website",
   },
@@ -43,10 +35,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // twitter: {
-  //   title: "Chronark",
-  //   card: "summary_large_image",
-  // },
   icons: {
     shortcut: "/favicon.png",
   },
@@ -60,31 +48,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${libre_baskerville.variable} antialiased`}
+        className={`${inter.variable} ${libre_baskerville.variable} antialiased dark`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <Theme
-            accentColor="iris"
-            grayColor="mauve"
-            radius="large"
-            scaling="100%"
-            panelBackground="translucent"
-          >
-            <main>
-              <div className="flex flex-col fixed items-center justify-center inset-[3vh] p-5 md:p-10 lg:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black rounded-lg">
-                <AppProvider>
-                  {children}
-                  <Toaster />
-                  <Particles
-                    className="absolute inset-0 animate-fade-in -z-10"
-                    quantity={100}
-                  />
-                </AppProvider>
-              </div>
-            </main>
-            <Footer />
-          </Theme>
-        </ThemeProvider>
+        <Toaster />
+        <Theme
+          accentColor="iris"
+          grayColor="mauve"
+          radius="large"
+          scaling="100%"
+          panelBackground="translucent"
+        >
+          <main>
+            <div className="flex flex-col fixed items-center justify-center inset-[3vh] p-2 xs:p-3 sm:p-5 md:p-10 lg:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black rounded-lg">
+              <AppProvider>
+                {children}
+                <Particles
+                  className="absolute inset-0 animate-fade-in -z-10"
+                  quantity={100}
+                />
+              </AppProvider>
+            </div>
+          </main>
+          <Footer />
+        </Theme>
       </body>
     </html >
   );

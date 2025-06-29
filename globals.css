@@ -68,6 +68,9 @@
   scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
 }
 
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;

@@ -1,4 +1,4 @@
-export type Topic = "FE" | "ML" | "FS";
+export type Topic = "FE" | "ML" | "FS" | "EX";
 
 type TopicStyle = {
   badgeShadow: string;
@@ -21,5 +21,10 @@ export const topicStyles: Record<Topic, TopicStyle> = {
     badgeShadow: "shadow-[0_0_10px_#ec003f]",
     cardHoverShadow: "hover:shadow-[0_0_15px_#ec003f]",
     cardBorder: "hover:border-rose-500/80",
+  },
+  EX: {
+    badgeShadow: "shadow-[0_0_10px_#fd9a00]",
+    cardHoverShadow: "hover:shadow-[0_0_15px_#fd9a00]",
+    cardBorder: "hover:border-amber-500/80",
   },
 };

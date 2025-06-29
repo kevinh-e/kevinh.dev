@@ -9,8 +9,7 @@ import { AppContext } from '@/app/AppContext';
 
 const Nav = () => {
   const routes = navigation;
-  const { currPage, pageIndex } = useContext(AppContext);
-  console.log(pageIndex);
+  const { currPage } = useContext(AppContext);
 
   return (
     <div className='container w-full'>

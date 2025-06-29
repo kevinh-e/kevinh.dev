@@ -7,10 +7,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Download, ExternalLink, Mail, Phone, Github } from "lucide-react"
+import Link from "next/link";
 
 export default function ResumePage() {
-  const isAtLeastMd = useMediaQuery("(min-width: 768px)")
-
   const handleDownload = () => {
     const link = document.createElement("a")
     link.href = "/resume.pdf" // You'll need to add your PDF to the public folder
@@ -21,11 +20,11 @@ export default function ResumePage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-6 h-full overflow-auto custom-scrollbar fade-out-bottom">
+    <div className="container mx-auto px-2 sm:px-4 sm:py-4 md:py-6 py-6 h-full overflow-auto custom-scrollbar fade-out-bottom">
       {/* Header with contact info and download button */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold">{resumeData.name}</h1>
+          <h1 className="font-serif text-3xl md:text-4xl lg:text-6xl font-bold tracking-wide">{resumeData.name}</h1>
           <div className="flex flex-wrap gap-3 mt-2">
             <div className="flex items-center text-sm text-muted-foreground">
               <Mail className="h-4 w-4 mr-1" />
@@ -35,30 +34,40 @@ export default function ResumePage() {
               <Phone className="h-4 w-4 mr-1" />
               <span>{resumeData.contact.phone}</span>
             </div>
-            <div className="flex items-center text-sm text-muted-foreground">
-              <ExternalLink className="h-4 w-4 mr-1" />
-              <span>{resumeData.contact.website}</span>
-            </div>
-            <div className="flex items-center text-sm text-muted-foreground">
-              <Github className="h-4 w-4 mr-1" />
-              <span>{resumeData.contact.github}</span>
-            </div>
+            <Link href="/">
+              <div className="flex items-center text-sm text-muted-foreground">
+                <ExternalLink className="h-4 w-4 mr-1" />
+                <span className="hover:text-foreground transition-colors duration-300">{resumeData.contact.website}</span>
+              </div>
+            </Link>
+            <Link href="https://github.com/kevinh-e">
+              <div className="flex items-center text-sm text-muted-foreground">
+                <Github className="h-4 w-4 mr-1" />
+                <span className="hover:text-foreground transition-colors duration-300">{resumeData.contact.github}</span>
+              </div>
+            </Link>
           </div>
         </div>
-        <Button onClick={handleDownload} className="bg-primary hover:bg-primary/90">
+        <Button onClick={handleDownload} className="bg-primary hover:bg-primary/90 font-sans tracking-wide">
           <Download className="mr-2 h-4 w-4" />
           Download Resume
         </Button>
       </div>
 
+      <div className="w-full h-[2px] bg-transparent mt-3 mb-8 bg-gradient-to-r from-foreground/80 via-40 via-foreground/80 to-border/20 transition-all duration-300" />
+
       {/* Education Section */}
       <div className="mb-8">
-        <h2 className="font-serif text-2xl font-semibold mb-4">Education</h2>
+        <div className="relative">
+          <h2 className="absolute font-sans text-2xl lg:text-3xl font-semibold tracking-wide">Education</h2>
+          <div className="absolute font-sans text-2xl lg:text-3xl font-semibold tracking-wide">Education</div>
+          <h2 className="font-sans text-2xl lg:text-3xl font-semibold mb-4 tracking-wide">Education</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {resumeData.education.map((edu, index) => (
             <Card key={index} className="border-2 border-border bg-secondary/30">
               <CardHeader>
-                <CardTitle className="font-serif text-xl">{edu.institution}</CardTitle>
+                <CardTitle className="font-sans text-xl xl:text-2xl">{edu.institution}</CardTitle>
                 <CardDescription>{edu.location}</CardDescription>
               </CardHeader>
               <CardContent>
@@ -74,12 +83,12 @@ export default function ResumePage() {
 
       {/* Technologies Section */}
       <div className="mb-8">
-        <h2 className="font-serif text-2xl font-semibold mb-4">Technologies</h2>
+        <h2 className="font-sans text-2xl lg:text-3xl font-semibold mb-4 tracking-wide">Technologies</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {Object.entries(resumeData.technologies).map(([category, items], index) => (
             <Card key={index} className="border-2 border-border bg-secondary/30">
               <CardHeader>
-                <CardTitle className="font-serif text-xl">{category}</CardTitle>
+                <CardTitle className="font-sans text-xl">{category}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
@@ -97,17 +106,16 @@ export default function ResumePage() {
 
       {/* Projects Section */}
       <div className="mb-8">
-        <h2 className="font-serif text-2xl font-semibold mb-4">Projects</h2>
+        <h2 className="font-sans text-2xl lg:text-3xl font-semibold mb-4 tracking-wide">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {resumeData.projects.map((project, index) => (
             <Card
               key={index}
-              className={`border-2 border-border bg-secondary/30 ${isAtLeastMd && project.isBig ? "md:col-span-2" : ""
-                }`}
+              className={`border-2 border-border bg-secondary/30 col-span-3`}
             >
               <CardHeader>
                 <div className="flex justify-between items-start">
-                  <CardTitle className="font-serif text-xl">{project.name}</CardTitle>
+                  <CardTitle className="font-sans text-xl">{project.name}</CardTitle>
                   <Text className="text-muted-foreground text-sm">{project.year}</Text>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-2">
@@ -145,14 +153,14 @@ export default function ResumePage() {
 
       {/* Experience Section */}
       <div className="mb-8">
-        <h2 className="font-serif text-2xl font-semibold mb-4">Experience</h2>
+        <h2 className="font-sans text-2xl lg:text-3xl font-semibold mb-4 tracking-wide">Experience</h2>
         <div className="grid grid-cols-1 gap-4">
           {resumeData.experience.map((exp, index) => (
             <Card key={index} className="border-2 border-border bg-secondary/30">
               <CardHeader>
                 <div className="flex flex-col md:flex-row justify-between md:items-center">
                   <div>
-                    <CardTitle className="font-serif text-xl">{exp.position}</CardTitle>
+                    <CardTitle className="font-sans text-xl">{exp.position}</CardTitle>
                     <CardDescription>{exp.company}</CardDescription>
                     <CardDescription>{exp.location}</CardDescription>
                   </div>
@@ -175,7 +183,7 @@ export default function ResumePage() {
 
       {/* Extracurricular Section */}
       <div className="mb-8">
-        <h2 className="font-serif text-2xl font-semibold mb-4">Extracurricular</h2>
+        <h2 className="font-sans text-2xl lg:text-3xl font-semibold mb-4 tracking-wide">Extracurricular</h2>
         <Card className="border-2 border-border bg-secondary/30">
           <CardContent className="pt-6">
             <ul className="list-disc pl-5 space-y-2">
