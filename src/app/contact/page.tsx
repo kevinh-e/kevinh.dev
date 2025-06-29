@@ -30,6 +30,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    const today = new Date();
 
     try {
       await emailjs.send(
@@ -39,6 +40,7 @@ export default function Contact() {
           user_name: formData.name,
           user_email: formData.email,
           message: formData.message,
+          time: today.toDateString(),
         },
         "5R6ruDNJZvRV6lbrf"
       )
