@@ -68,6 +68,9 @@
   scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
 }
 
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -87,4 +90,9 @@
   background: transparent;
 }
 
+.fade-out-bottom {
+  /* cut off the bottom 20% of the content with a gradient to transparent */
+  mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 95%, transparent 100%);
+}
 

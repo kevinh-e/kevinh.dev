@@ -21,6 +21,8 @@ const badgeVariants = cva(
           "border-none bg-gradient-to-bl from-indigo-400 to-indigo-700 text-secondary-foreground",
         FS:
           "border-none bg-gradient-to-bl from-pink-400 to-rose-700 text-secondary-foreground",
+        EX:
+          "border-none bg-gradient-to-bl from-orange-400 to-amber-700 text-secondary-foreground",
       },
     },
     defaultVariants: {

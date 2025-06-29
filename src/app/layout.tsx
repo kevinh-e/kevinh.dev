@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@radix-ui/themes/styles.css";
-import { ThemeProvider } from "next-themes";
 import { Theme } from "@radix-ui/themes";
 
 import { inter, libre_baskerville } from "@/app/fonts/fonts";
@@ -8,6 +7,7 @@ import "../../globals.css"
 import Footer from "@/components/Footer";
 import { AppProvider } from "./AppContext";
 import Particles from "@/components/Particles";
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -21,13 +21,6 @@ export const metadata: Metadata = {
       "Software Engineering student at UNSW, Sydney",
     url: "https://kevinh.dev",
     siteName: "kevinh.dev",
-    // images: [
-    //   {
-    //     url: "https://chronark.com/og.png",
-    //     width: 1920,
-    //     height: 1080,
-    //   },
-    // ],
     locale: "en-AU",
     type: "website",
   },
@@ -42,10 +35,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // twitter: {
-  //   title: "Chronark",
-  //   card: "summary_large_image",
-  // },
   icons: {
     shortcut: "/favicon.png",
   },
@@ -57,20 +46,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${inter.variable} ${libre_baskerville.variable} antialiased`}
+        className={`${inter.variable} ${libre_baskerville.variable} antialiased dark`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <Theme
-            accentColor="iris"
-            grayColor="mauve"
-            radius="large"
-            scaling="100%"
-            panelBackground="translucent"
-          >
-            <main className="flex flex-col fixed items-center justify-center inset-[3vh] p-5 md:p-10 lg:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-              {/* <DevCallout /> */}
+        <Toaster />
+        <Theme
+          accentColor="iris"
+          grayColor="mauve"
+          radius="large"
+          scaling="100%"
+          panelBackground="translucent"
+        >
+          <main>
+            <div className="flex flex-col fixed items-center justify-center inset-[3vh] p-2 xs:p-3 sm:p-5 md:p-10 lg:p-16 border bg-black border-zinc-500 bg-gradient-to-tl from-black via-zinc-600/20 to-black rounded-lg">
               <AppProvider>
                 {children}
                 <Particles
@@ -78,10 +67,10 @@ export default function RootLayout({
                   quantity={100}
                 />
               </AppProvider>
-            </main>
-            <Footer />
-          </Theme>
-        </ThemeProvider>
+            </div>
+          </main>
+          <Footer />
+        </Theme>
       </body>
     </html >
   );

@@ -22,7 +22,7 @@ export default {
       },
       animation: {
         "fade-in": "fade-in 2.5s ease-in-out forwards",
-        "fade-in-delay": "fade-in 4s ease-in-out forwards",
+        "fade-in-delay": "fade-in 3s ease-in-out forwards",
         title: "title 2.5s ease-out forwards",
         "fade-left": "fade-left 2.5s ease-in-out forwards",
         "fade-right": "fade-right 2.5s ease-in-out forwards",
@@ -250,5 +250,8 @@ export default {
     "shadow-[0_0_10px_#00d5be]",
     "shadow-[0_0_10px_#615fff]",
     "shadow-[0_0_10px_#ec003f]",
+    "shadow-[0_0_10px_#fd9a00]",
+    "hover:shadow-[0_0_15px_#fd9a00]",
+    "hover:border-amber-500/80",
   ]
 }
